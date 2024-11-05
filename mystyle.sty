@@ -1,0 +1,94 @@
+\usepackage{mathrsfs, mathtools,amsthm, amssymb, graphicx, cleveref, tikz-cd, epigraph, titlesec}
+%\usepackage[sc, osf]{mathpazo} 
+\usepackage{geometry}
+\hypersetup{
+		colorlinks			= true, 	
+		urlcolor			= BrickRed, 
+		linkcolor			= BrickRed, 	
+		citecolor			= PineGreen 	
+}
+
+\newgeometry{vmargin={2.5cm}, hmargin={3cm,3cm}}
+\newmuskip\pFqmuskip
+% command for hypergeometric equation notation 
+\newcommand*\pFq[6][8]{%
+  \begingroup % only local assignments
+  \pFqmuskip=#1mu\relax
+  % make the comma math active
+  \mathcode`\,=\string"8000
+  % and define it to be \pFqcomma
+  \begingroup\lccode`\~=`\,
+  \lowercase{\endgroup\let~}\pFqcomma
+  % typeset the formula
+  {}_{#2}\varphi_{#3}{\left[\genfrac..{0pt}{}{#4}{#5};#6\right]}%
+  \endgroup
+}
+\newcommand{\pFqcomma}{\mskip\pFqmuskip}
+
+% to use, \pFq{3}{2}{a,b,c}{d,e}{z} 
+% 3 on top, 2 on bottom, semicolon and z
+
+
+\linespread{1.05}
+	\frenchspacing
+	\AtBeginDocument{
+		\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+		\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+    }
+\newcommand{\presectionskip}{-1.5\baselineskip}
+\newcommand{\postsectionskip}{0.3\baselineskip}
+\renewcommand{\section}{\@startsection
+  {chapter}{0}{0mm}%                  % name, level, indent
+  {\presectionskip}%                   % beforeskip
+  {\postsectionskip}%                 % afterskip
+  {\sffamily\huge}}% % style		\HUGE ?%\bfseries
+\renewcommand{\section}{\@startsection
+  {section}{1}{0mm}%                  % name, level, indent
+  {\presectionskip}%                   % beforeskip
+  {\postsectionskip}%                 % afterskip
+  {\sffamily\LARGE}}% % style%\bfseries
+\renewcommand{\subsection}{\@startsection
+  {subsection}{2}{0mm}%                  % name, level, indent
+  {\presectionskip}%                   % beforeskip
+  {\postsectionskip}%                 % afterskip
+  {\sffamily\Large}}% % style%\bfseries
+\renewcommand{\subsubsection}{\@startsection
+  {subsubsection}{3}{0mm}%                  % name, level, indent
+  {\presectionskip}%                   % beforeskip
+  {\postsectionskip}%                 % afterskip
+  {\sffamily\normalsize}}% % style%\bfseries
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+\newcommand\HUGE{\@setfontsize\Huge{30}{47}} 
+%\usepackage{titling}
+%\usepackage{fontspec}
+\titleformat{\chapter}[display]
+{\sffamily\Large}
+{Chapter {\HUGE\normalfont\thechapter}}    %% change here
+{1em}
+{\huge}
+\titleformat{\section}
+{\sffamily\Large}
+{\normalfont{\@setfontsize\Large{18}{47}\thesection.}}    %% change here
+{1em}
+{}
+\titleformat{\subsection}
+{\sffamily\large}
+{\normalfont{\Large\thesubsection}.}    %% change here
+{1em}
+{}
+\titleformat{\subsubsection}
+{\sffamily\normalsize}
+{\normalfont{\large\thesubsubsection}.}    %% change here
+{1em}
+{}
+%\renewcommand{\maketitlehooka}{\headingfont}
+\makeatother
+\newcommand{\titlebs}{\vspace{5em}}
+\newcommand{\titlems}{\vspace{3ex}}
+\newcommand{\titless}{\vspace{1.5ex}}
+\makeatletter
+\def\smallunderbrace#1{\mathop{\vtop{\m@th\ialign{##\crcr
+   $\hfil\displaystyle{#1}\hfil$\crcr
+   \noalign{\kern3\p@\nointerlineskip}%
+   \tiny\upbracefill\crcr\noalign{\kern3\p@}}}}\limits}
+\makeatother
